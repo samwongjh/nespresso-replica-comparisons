@@ -16,7 +16,8 @@ export interface ClosersPrinciple {
 
 export const REFERENCE_URLS = {
   original: 'https://www.nespresso.com/sg/en/order/machines/original/swarovski-shine-bundle',
-  rebuild: 'https://nespresso-closers-after.vercel.app/',
+  rebuild:
+    'https://nespresso-closers-after.vercel.app/#/order/machines/original/swarovski-shine-bundle',
 } as const;
 
 export const GENERATED_IMAGES = {
@@ -31,226 +32,221 @@ export const CLOSERS_PRINCIPLES: ClosersPrinciple[] = [
     letter: 'C',
     index: '01',
     title: 'Convenience',
-    subtitle: 'Frictionless discovery, comparison, and one-tap acquisition',
+    subtitle: 'Frictionless spec inspection, edition switching, and mobile checkout',
     originalSummary:
-      'Buried in a deep category tree with static specs, no inline machine comparison, and multi-page navigation to evaluate capsule compatibility or delivery thresholds.',
+      'Isolates the Swarovski Shine Bundle inside a rigid corporate product layout with static spec text, no interactive extraction profile preview, and no sticky mobile purchase bar.',
     rebuildSummary:
-      'Single-page editorial storefront with live search, category tabs, a modal Machine Comparison Matrix, 4-cup extraction selector, and a slide-over cart with a live SGD 80 free delivery tracker.',
+      'Equips the Swarovski PDP with sticky dual-column gallery + buy-box, 5 Programmable Extraction Profiles, instant quantity controls, and a persistent mobile quick-add bar.',
     originalEvidence: [
-      'Deep breadcrumb path (Home > Machines > Original > Bundle) isolates the product from related capsules and machines.',
-      'No side-by-side comparison table between CitiZ Platinum Swarovski, standard CitiZ Platinum, and Vertuo Next.',
-      'Mobile shoppers must scroll back to the top buy-box to add to cart.',
+      'Static feature bullets omit cup volumes in ml, brew seconds, and thermal targets.',
+      'Shoppers cannot switch between Shine Bundle, Machine Only, and Milk Bundle on the same PDP card.',
+      'Mobile shoppers must scroll back to the top buy-box to add the bundle to their basket.',
     ],
     rebuildEvidence: [
-      'Instant category tabs (All Essentials, Machines, Coffee Capsules, Accessories, Bundle Sets) plus live keyword search.',
-      'Interactive "Compare All Machines" matrix showing line, pressure, cup sizes, heat-up time, and bundle savings in one table.',
-      'Sticky mobile quick-add bar and slide-over bag drawer with instant quantity controls and 1-click capsule add-ons.',
+      'Interactive 5-button Extraction Explorer (Espresso 40 ml, Lungo 110 ml, Americano 150 ml, Americano XL 200 ml, Hot Water 200 ml).',
+      'Clean Technical Specifications ledger (19 bar, 25s heat-up, 1.0 L tank, 1,260 W Type G SG plug) paired beside extraction telemetry.',
+      'Sticky desktop buy-box + pinned mobile bottom bar (`ADD TO CART`) plus slide-over bag drawer.',
     ],
     behavioralMechanism:
-      'Removing search, comparison, and checkout friction lowers decision fatigue and keeps high-intent buyers in an uninterrupted purchase loop.',
-    uiLocation: 'Top Navigation · Catalog Filters · Machine Comparison Modal · Slide-Over Cart',
+      'Answering technical, voltage, and portion questions directly inside the purchase flow removes research detours and cuts checkout abandonment.',
+    uiLocation: 'Sticky Buy-Box · 5 Extraction Profiles · Tech Specs · Mobile Sticky Bar',
   },
   {
     id: 'L',
     letter: 'L',
     index: '02',
     title: 'Loss Avoidance',
-    subtitle: 'Concrete savings anchors, live urgency, and scarcity framing',
+    subtitle: 'Explicit retail anchors, ticking holiday deadline, and Singapore stock alerts',
     originalSummary:
-      'Displays a flat SGD 499 price with minimal bundle value breakdown, no promotional deadline timer, and no clear visibility into limited Singapore stock allocation.',
+      'Displays a flat SGD 499 price with no comparison anchor, no holiday countdown deadline, and no visibility into limited Singapore festive allocation.',
     rebuildSummary:
-      'Pairs a ticking Holiday Offer countdown timer with an explicit SGD 609 strikethrough anchor (Save SGD 110 · 18% Off) and a live low-stock notice (6 units left in Singapore).',
+      'Pairs a live ticking Holiday Promotion countdown with an explicit SGD 609 strikethrough anchor (Save SGD 110 · 18% Off) and a Singapore low-stock notice (6 units remaining).',
     originalEvidence: [
-      'Single static SGD 499 figure hides the SGD 110 savings relative to buying the machine, Travel Mug, PIXIE cups, and ornament separately.',
-      'No time-bound campaign countdown to clarify when the holiday edition closes.',
-      'No stock scarcity cue, encouraging shoppers to defer purchasing indefinitely.',
+      'Single static SGD 499.00 price hides the SGD 110 savings relative to purchasing each piece separately.',
+      'No time-bound campaign countdown to clarify when the holiday edition ends.',
+      'No inventory allocation cue, making postponement feel risk-free.',
     ],
     rebuildEvidence: [
-      'Live countdown timer (Days : Hours : Minutes : Seconds) anchored right beneath the primary hero and PDP buy-box.',
-      'Explicit price anchor: SGD 499 vs SGD 609 strikethrough with "Save SGD 110 (18% Off)" callout.',
-      'Singapore stock alert: "Limited Quantities Available · Only 6 units remaining in our Singapore festive allocation."',
+      'Live countdown timer (`Holiday promotion ends in` Days : Hours : Min : Sec) placed directly above edition selection.',
+      'Explicit price anchor: `SGD 499.00` vs `SGD 609.00` strikethrough with `Save SGD 110.00 (18% Off)`.',
+      'Scarcity alert: `Limited Quantities Available · Stock is Low — Only 6 units remaining in our Singapore festive allocation.`',
     ],
     behavioralMechanism:
-      'Prospect theory shows losses loom larger than equivalent gains; explicit savings anchors and time-boxed scarcity convert passive browsing into immediate action.',
-    uiLocation: 'Hero Countdown · Buy-Box Price Anchor · Stock Alert Banner',
+      'Losses loom larger than equivalent gains; transparent bundle savings combined with time-boxed Singapore stock allocation converts browsing into immediate checkout.',
+    uiLocation: 'PDP Price Anchor · Live Countdown · Singapore Stock Alert',
   },
   {
     id: 'O',
     letter: 'O',
     index: '03',
     title: 'Own Identity',
-    subtitle: 'Self-segmentation by coffee ritual and gifting persona',
+    subtitle: 'Tailored Swarovski editions matching collector, purist, and milk-ritual buyers',
     originalSummary:
-      'Treats every visitor identically with generic hardware copy, offering zero pathways for beginners, milk-drinkers, or espresso purists to see themselves in the offer.',
+      'Presents a single fixed bundle SKU with no tailored variations for espresso purists wanting the crystal machine alone or latte drinkers needing integrated milk frothing.',
     rebuildSummary:
-      'Introduces coffee-ritual bundle personas (First Timers, Casual Drinkers, Coffee Connoisseurs) alongside an Edition Selector (Full Shine Bundle vs Machine Only).',
+      'Lets visitors self-select inside the PDP between 3 distinct crystal editions (`Swarovski Shine Bundle`, `CitiZ Platinum × Swarovski` Machine Only, and `CitiZ Platinum & Milk × Swarovski`), updating SKU and `Included in Your Box` dynamically.',
     originalEvidence: [
-      'One-size-fits-all product description assumes buyers already know Original vs Vertuo capsule systems.',
-      'No curated starter or connoisseur bundle variants tailored to daily drinking habits.',
+      'One-size-fits-all SKU forces milk drinkers or minimalist machine buyers to leave the page.',
+      'Box contents appear as static prose rather than an edition-specific checklist.',
     ],
     rebuildEvidence: [
-      'Interactive persona filter: "First Timers · New to Coffee", "Casual Drinkers", and "Coffee Connoisseurs".',
-      'Edition toggle inside the buy-box: "Nespresso × Swarovski Shine Bundle (SGD 499)" vs "CitiZ Platinum × Swarovski Machine Only (SGD 429)".',
-      'Tasting profile alignment showing which intensity blends match each identity.',
+      'Interactive `Select Edition` cards with live SKU switching (`SG-OL-SWA-BUNDLE-26`, `SG-OL-SWA-MACH-26`, `SG-OL-SWA-MILK-26`).',
+      'Dynamic `Included in Your Box` verification list that updates immediately for collector gifting, standalone hardware, or integrated Aeroccino milk rituals.',
     ],
     behavioralMechanism:
-      'When an interface lets buyers self-select a label that mirrors their taste ("Coffee Connoisseurs"), product affinity and bundle attach rates rise sharply.',
-    uiLocation: 'Bundle Sets Persona Filter · PDP Edition Selector',
+      'Offering identity-aligned configurations on the same PDP prevents bounce-backs and matches the buyer’s daily coffee ritual without choice overload.',
+    uiLocation: 'Select Edition Cards · Dynamic Included-in-Your-Box Checklist',
   },
   {
     id: 'S1',
     letter: 'S',
     index: '04',
     title: 'Status',
-    subtitle: 'Limited-edition prestige, craft provenance, and member tiering',
+    subtitle: 'Collector prestige, 62-facet Swarovski provenance, and peer adoption',
     originalSummary:
-      'Uses standard mass-retail template styling that frames a Swarovski crystal collaboration much like an everyday appliance.',
+      'Uses standard mass-market product page styling that treats a limited Swarovski crystal collaboration like a routine kitchen appliance.',
     rebuildSummary:
-      'Elevates the collaboration into a collector artefact with "Connoisseur Tier" member badging, 62-facet Swarovski crystal provenance, and "1,000+ Singapore buyers" social proof.',
+      'Frames the PDP as a limited collector release with `Original Line · Limited Holiday Edition`, a 4-piece ensemble showcase, `Connoisseur Tier` member badging, and `1,000+ Singapore buyers` proof.',
     originalEvidence: [
-      'Standard e-commerce grid layout weakens the luxury positioning of a Swarovski crystal edition.',
-      'No collector social proof or member tier distinction visible on the product frame.',
+      'Corporate product grid styling dilutes the luxury aura of precision-cut Swarovski crystal hardware.',
+      'No visible social proof tally showing collector adoption in Singapore.',
     ],
     rebuildEvidence: [
-      'Editorial serif display typography ("Sculpted Brilliance. Crafted for Espresso.") on obsidian #1B1918 and champagne #9E7B4F.',
-      'Account recognition badge: "Jocelyn C. · Connoisseur Tier · Limited Holiday Edition".',
-      'Verified Singapore social proof: "Join the 1,000+ coffee lovers in Singapore who have already purchased this edition" + 4.0 / 5 (42 reviews).',
+      'Editorial serif PDP title (`Swarovski Shine Bundle`) set on warm alabaster `#FAF9F6` with antique gold `#9E7B4F` accents.',
+      'Dedicated `Curated Four-Piece Ensemble` section detailing the CitiZ Crystal Edition, Travel Mug, PIXIE Cups, and 62-Facet Ornament.',
+      'Peer status cue: `Join the 1,000+ coffee lovers in Singapore who have already purchased this edition.`',
     ],
     behavioralMechanism:
-      'Luxury hardware converts on symbolic capital; editorial restraint, numbered rarity, and peer adoption signal taste and exclusivity.',
-    uiLocation: 'Hero Editorial Frame · Member Status Bar · Social Proof Header',
+      'Luxury hardware converts on symbolic capital; elevated typography, craft provenance, and high-status member cues justify the premium price point.',
+    uiLocation: 'PDP Buy-Box Header · Four-Piece Ensemble · Member Status Bar',
   },
   {
     id: 'E',
     letter: 'E',
     index: '05',
     title: 'Emotion',
-    subtitle: 'Sensory storytelling, tactile zoom, and ritual atmosphere',
+    subtitle: 'Tactile 1.25× finish inspection, sensory prose, and ensemble storytelling',
     originalSummary:
-      'Relies on dry technical bullet points ("4 coffee size options plus hot water") and small carousel thumbnails that fail to evoke aroma, light refraction, or gifting delight.',
+      'Relies on dry feature statements and small static thumbnails that fail to convey crystal light refraction, crema texture, or festive gifting warmth.',
     rebuildSummary:
-      'Pairs high-contrast espresso-and-ivory photography, a 4-frame "Inspect Finish" 1.25× zoom gallery, sensory tasting notes, and warm festive hosting prose.',
+      'Delivers a 4-frame interactive gallery (`01 / 04`) with an `Inspect Finish` 1.25× zoom control, sensory ritual copywriting, and individual visual spotlights for every piece in the box.',
     originalEvidence: [
-      'Spec-sheet tone focuses on wattage and tank litres without evoking morning rituals or holiday gifting.',
-      'Static product thumbnails lack tactile inspection cues for the hand-applied crystal finish.',
+      'Spec-sheet description reads like an internal catalog entry rather than a luxury gift narrative.',
+      'Lacks a high-resolution tactile zoom button for inspecting the crystal pavé band and chrome finish.',
     ],
     rebuildEvidence: [
-      'Interactive 4-frame gallery with "Inspect Finish" 1.25× zoom toggle and numbered frame captions (01 / 04).',
-      'Sensory narrative: "Brushed stainless steel CitiZ Platinum espresso craftsmanship elevated with hand-applied Swarovski crystal brilliance."',
-      'Aromatic blend notes ("deep cocoa and roasted malt notes", "warm cereal biscuit and fresh fruit") throughout capsule pairings.',
+      '4-frame gallery (`Complete Shine Bundle`, `CitiZ Platinum Crystal Band`, `Travel Mug, PIXIE Cups & Ornament`, `14-Capsule Tasting Assortment`) with `Inspect Finish` toggle.',
+      'Evocative positioning: `Brushed stainless steel CitiZ Platinum espresso craftsmanship elevated with hand-applied Swarovski crystal brilliance—designed for festive hosting and timeless daily espresso rituals.`',
+      'Four-piece visual gallery (`Inside the Nespresso × Swarovski Shine Bundle`) celebrating every tactile accessory.',
     ],
     behavioralMechanism:
-      'Sensory language and tactile visual inspection bridge the physical gap of online shopping, letting buyers imagine the machine on their countertop.',
-    uiLocation: 'Sticky 4-Frame Zoom Gallery · Editorial Hero Copy · Capsule Tasting Notes',
+      'Sensory storytelling and tactile zoom bridge the physical gap of e-commerce, helping shoppers picture the machine gleaming on their counter.',
+    uiLocation: '4-Frame Sticky Zoom Gallery · PDP Editorial Copy · Ensemble Grid',
   },
   {
     id: 'R',
     letter: 'R',
     index: '06',
     title: 'Recognition',
-    subtitle: 'Personalization, local Singapore proof, and institutional trust',
+    subtitle: 'Personal member greeting, Singapore reviews, and Type G / same-day assurances',
     originalSummary:
-      'Anonymous guest-first header, generic regional footer, and no visible localized Singapore customer reviews or same-day courier assurances near the buy button.',
+      'Displays an anonymous guest header, hides localized Singapore technical assurances, and omits verified Singapore buyer reviews near the purchase decision.',
     rebuildSummary:
-      'Greets signed-in member "Jocelyn C.", highlights verified Singapore neighborhood reviews, and anchors local trust (Same-Day SG Delivery, 3 SG Boutiques, 2-Year Warranty, 9% GST inclusive).',
+      'Recognizes signed-in member `Jocelyn C.` (`Connoisseur Tier`), surfaces `4.0 / 5 (42 reviews)` from Orchard, Bukit Timah, and Marina Bay buyers, and guarantees SG Type G 230V plug & same-day courier dispatch.',
     originalEvidence: [
-      'No personalized member greeting or tier acknowledgment on arrival.',
-      'Customer reviews and Singapore boutique pickup/warranty details are absent or buried far from the purchase decision.',
+      'Generic global footer and unlocalized specification phrasing reduce regional confidence.',
+      'No verified Singapore customer reviews linked directly from the PDP rating summary.',
     ],
     rebuildEvidence: [
-      'Persistent member greeting ("Jocelyn C. · Connoisseur Tier") with Sign-In / Sign-Out simulation.',
-      'Verified Singapore Buyer Reviews block (Orchard, Bukit Timah, Marina Bay) linked directly from the 4.0 / 5 rating summary.',
-      'Localized assurances: "In Stock in Singapore", "Same-Day SG Complimentary Delivery", 1800 888 8000 Club helpline, and 2-Year Machine Warranty + Loan Service.',
+      'Personalized account header (`Jocelyn C. · Connoisseur Tier`) + top ribbon (`Complimentary delivery above SGD 80`).',
+      'Clickable `4.0 / 5 (42 reviews)` rating jumping smoothly to `Verified Singapore Buyers` neighborhood testimonials.',
+      'Three explicit SG assurances under Add to Cart: Same-day delivery before 2:30 PM, 2-year official SG warranty & Type G 230V plug, and 14-capsule tasting box.',
     ],
     behavioralMechanism:
-      'Recognizing both the individual customer and their specific geographic context (Singapore GST, same-day dispatch, local boutiques) removes cross-border purchase anxiety.',
-    uiLocation: 'Account Header · Verified SG Reviews · Trust & Boutique Footer',
+      'Recognizing both the returning member and Singapore-specific electrical/delivery realities eliminates last-mile buyer hesitation.',
+    uiLocation: 'Account Header · Rating Anchor · SG Assurances · Verified Reviews',
   },
   {
     id: 'S2',
     letter: 'S',
     index: '07',
     title: 'Stickiness',
-    subtitle: 'Persistent cart state, compatible capsule loops, and ecosystem lock-in',
+    subtitle: 'One-click Original capsule pairings, persistent bag, and SGD 80 delivery loop',
     originalSummary:
-      'Single-item transaction flow: adding the bundle redirects or opens a static bag without encouraging compatible Original sleeve attachments or capsule replenishment.',
+      'Treats the Swarovski bundle as a terminal single-item purchase without prompting compatible Original capsule sleeves or ongoing tasting replenishment.',
     rebuildSummary:
-      'Uses persistent localStorage cart state, machine-line compatibility highlights inside the bag, a SGD 80 delivery meter, and 1-click "Complete Your Tasting" Original sleeve upsells.',
+      'Embeds `Complete Your Tasting` 1-click Original capsule sleeve cards (`Arpeggio`, `Ristretto Italiano`, `Volluto`) directly at the base of the PDP, backed by a persistent bag (`nespresso_sg_bag_v1`) with an SGD 80 delivery progress meter.',
     originalEvidence: [
-      'No automated reminder inside the cart linking the Original machine to Original-line capsules.',
-      'Zero one-click sleeve cross-sells on the bundle PDP to establish recurring capsule ordering.',
+      'No Original-line sleeve cross-sell on the PDP to pair with the included 14-capsule starter box.',
+      'Basket drawer does not highlight machine-line capsule compatibility.',
     ],
     rebuildEvidence: [
-      'Persistent bag state (nespresso_sg_bag_v1) retained across views and reloads.',
-      'Smart Bag compatibility highlighting: matches Original capsules directly when an Original machine is in the bag.',
-      '"Complete Your Tasting" 1-click sleeve section (Arpeggio, Ristretto Italiano, Volluto) plus 100% recyclable aluminium capsule loop messaging.',
+      '`Complete Your Tasting · Recommended Original Coffee Sleeves` section with instant `ADD TO CART` feedback (`ADDED`).',
+      'Persistent localStorage bag that highlights Original Line compatibility whenever an Original machine is added.',
+      'Live SGD 80 free-delivery progress bar and 100% recyclable aluminium capsule messaging.',
     ],
     behavioralMechanism:
-      'Turning a one-off hardware sale into a guided capsule replenishment habit increases customer lifetime value and anchors recurring Nespresso Club visits.',
-    uiLocation: 'Complete Your Tasting Grid · Smart Cart Drawer · Recycling Loop',
+      'Pairing hardware acquisition with one-click compatible capsule sleeves establishes a recurring Nespresso Club replenishment habit from day one.',
+    uiLocation: 'Complete Your Tasting Grid · Smart Cart Drawer · Recycling Assurances',
   },
 ];
 
-export interface BundleIdentityProfile {
-  id: 'first-timers' | 'casual-drinkers' | 'connoisseurs';
+export interface PdpEditionOption {
+  id: 'shine-bundle' | 'machine-only' | 'milk-bundle';
   label: string;
-  tagline: string;
-  bundleName: string;
-  line: 'Original' | 'Vertuo';
+  subtitle: string;
   priceSgd: number;
   compareAtSgd: number;
+  sku: string;
   includes: string[];
-  whyItWorks: string;
+  identityFit: string;
 }
 
-export const BUNDLE_IDENTITIES: BundleIdentityProfile[] = [
+export const PDP_EDITIONS: PdpEditionOption[] = [
   {
-    id: 'first-timers',
-    label: 'First Timers',
-    tagline: 'New to home espresso',
-    bundleName: 'Vertuo Discovery Starter Set',
-    line: 'Vertuo',
-    priceSgd: 288,
-    compareAtSgd: 345,
-    includes: [
-      'Vertuo Next Matte Black Machine',
-      '30 Mild & Balanced Capsules (Melozio, Solelio, Voltesso)',
-      'Double-Walled Tasting Mug & Quick-Start Guide',
-    ],
-    whyItWorks:
-      'Removes intimidation for newcomers via barcode auto-calibration and approachable smooth blends.',
-  },
-  {
-    id: 'casual-drinkers',
-    label: 'Casual Drinkers',
-    tagline: 'Daily milk & iced café',
-    bundleName: 'Morning Lungo & Frother Set',
-    line: 'Original',
-    priceSgd: 348,
-    compareAtSgd: 412,
-    includes: [
-      'CitiZ Platinum Stainless Steel Machine',
-      'Aeroccino 4 Hot & Cold Milk Frother',
-      '30 World Explorations & Barista Creations Capsules',
-    ],
-    whyItWorks:
-      'Mirrors daily flat white and iced latte habits with one-touch micro-foam bundled at 16% savings.',
-  },
-  {
-    id: 'connoisseurs',
-    label: 'Coffee Connoisseurs',
-    tagline: 'Collector & intense roasts',
-    bundleName: 'Nespresso × Swarovski Shine Bundle',
-    line: 'Original',
+    id: 'shine-bundle',
+    label: 'Swarovski Shine Bundle',
+    subtitle: 'Machine + Crystal Travel Mug + PIXIE Cups + Ornament',
     priceSgd: 499,
     compareAtSgd: 609,
+    sku: 'SG-OL-SWA-BUNDLE-26',
     includes: [
-      'CitiZ Platinum × Swarovski Crystal Machine',
-      'Swarovski Travel Mug & PIXIE Espresso/Lungo Cups',
-      '62-Facet Festive Crystal Capsule Ornament',
+      'Nespresso × Swarovski CitiZ Platinum Machine',
+      'Nespresso × Swarovski Travel Mug with Crystal Holder',
+      'PIXIE Espresso & Lungo Stainless Cups Set',
+      'Festive 62-Facet Crystal Capsule Ornament',
+      'Complimentary 14-Capsule Original Tasting Box',
     ],
-    whyItWorks:
-      'Satisfies status and craftsmanship desires with collector Swarovski hardware and SGD 110 holiday anchor.',
+    identityFit: 'Collector & Holiday Gifting Ensemble · Save SGD 110 (18% Off)',
+  },
+  {
+    id: 'machine-only',
+    label: 'CitiZ Platinum × Swarovski',
+    subtitle: 'Crystal-Embellished Machine Only',
+    priceSgd: 429,
+    compareAtSgd: 469,
+    sku: 'SG-OL-SWA-MACH-26',
+    includes: [
+      'Nespresso × Swarovski CitiZ Platinum Machine',
+      'Complimentary 14-Capsule Original Tasting Box',
+      '2-Year Official Nespresso Singapore Warranty',
+    ],
+    identityFit: 'Espresso Purists Upgrading Hardware · Save SGD 40',
+  },
+  {
+    id: 'milk-bundle',
+    label: 'CitiZ Platinum & Milk × Swarovski',
+    subtitle: 'Machine + Integrated Milk Frother Bundle',
+    priceSgd: 509,
+    compareAtSgd: 619,
+    sku: 'SG-OL-SWA-MILK-26',
+    includes: [
+      'Nespresso × Swarovski CitiZ Platinum & Milk Machine',
+      'Integrated Aeroccino Hot & Cold Milk Frother',
+      'Festive 62-Facet Crystal Capsule Ornament',
+      'Complimentary 14-Capsule Original Tasting Box',
+    ],
+    identityFit: 'Daily Flat White & Iced Latte Rituals · Save SGD 110 (18% Off)',
   },
 ];
 
@@ -268,33 +264,41 @@ export const EXTRACTION_SIZES: ExtractionSize[] = [
     id: 'espresso',
     label: 'Espresso',
     volumeMl: 40,
-    brewTimeSec: 25,
-    temperatureC: 88,
-    profile: 'Dense hazelnut crema · 19-bar extraction',
+    brewTimeSec: 22,
+    temperatureC: 86,
+    profile: 'High-pressure 19-bar extraction yielding dense, hazelnut-tinted crema.',
   },
   {
     id: 'lungo',
     label: 'Lungo',
     volumeMl: 110,
     brewTimeSec: 42,
-    temperatureC: 87,
-    profile: 'Elongated aromatic pull · balanced roast',
+    temperatureC: 85,
+    profile: 'Extended water flow engineered for Original Lungo blends without over-extraction.',
   },
   {
     id: 'americano',
     label: 'Americano',
     volumeMl: 150,
     brewTimeSec: 48,
-    temperatureC: 89,
-    profile: 'Espresso + hot water bypass · clean body',
+    temperatureC: 84,
+    profile: 'Dedicated two-stage cycle: 25 ml ristretto followed by 125 ml pure hot water.',
   },
   {
     id: 'americano-xl',
     label: 'Americano XL',
     volumeMl: 200,
     brewTimeSec: 56,
-    temperatureC: 89,
-    profile: 'Full mug format · gentle linger',
+    temperatureC: 84,
+    profile: 'Generous café-style long black combining 40 ml espresso with 160 ml tempered water.',
+  },
+  {
+    id: 'hot-water',
+    label: 'Hot Water',
+    volumeMl: 200,
+    brewTimeSec: 32,
+    temperatureC: 88,
+    profile: 'Clean, instant hot water spout for pre-warming cups or preparing loose-leaf tea.',
   },
 ];
 
@@ -310,21 +314,21 @@ export const CAPSULE_UPSELLS: CapsuleUpsell[] = [
   {
     id: 'arpeggio',
     name: 'Ispirazione Firenze Arpeggio',
-    notes: 'Deep cocoa · roasted malt',
+    notes: 'Intensity 9 · Intense & Creamy · Cocoa',
     intensity: 9,
     priceSgd: 9.5,
   },
   {
     id: 'ristretto',
     name: 'Ispirazione Ristretto Italiano',
-    notes: 'Dark chocolate · berry acidity',
+    notes: 'Intensity 10 · Dark Roast · Berry & Chocolate',
     intensity: 10,
     priceSgd: 9.5,
   },
   {
     id: 'volluto',
     name: 'Volluto',
-    notes: 'Sweet biscuit · fresh fruit',
+    notes: 'Intensity 4 · Sweet & Light · Biscuit & Fruit',
     intensity: 4,
     priceSgd: 9.2,
   },
@@ -339,51 +343,51 @@ export interface StructuralDiffRow {
 
 export const STRUCTURAL_DIFF_ROWS: StructuralDiffRow[] = [
   {
-    dimension: 'Information Architecture',
+    dimension: 'PDP Layout & Ergonomics',
     closersTag: 'C · Convenience',
-    originalPage: 'Isolated single-SKU PDP buried inside 4-level category breadcrumbs.',
-    rebuildPage: 'Unified storefront + instant PDP switch with live search & category tabs.',
+    originalPage: 'Standard static column layout; scrolling away loses sight of price and CTA.',
+    rebuildPage: 'Dual sticky 7:5 gallery + buy-box, 5 Extraction Profiles, and pinned mobile CTA.',
   },
   {
     dimension: 'Price & Savings Framing',
     closersTag: 'L · Loss Avoidance',
-    originalPage: 'Flat SGD 499 display with no retail anchor or bundle savings delta.',
-    rebuildPage: 'SGD 499 vs SGD 609 strikethrough anchor · Save SGD 110 (18% Off) + countdown.',
+    originalPage: 'Flat SGD 499.00 display with no retail anchor or savings breakdown.',
+    rebuildPage: 'SGD 499.00 vs SGD 609.00 strikethrough · Save SGD 110.00 (18% Off) + countdown.',
   },
   {
     dimension: 'Inventory & Urgency',
     closersTag: 'L · Loss Avoidance',
-    originalPage: 'Generic "In Stock" status without seasonal deadline or unit visibility.',
-    rebuildPage: 'Live Holiday timer + "Only 6 units remaining in Singapore allocation" alert.',
+    originalPage: 'Generic availability status without campaign deadline or unit count.',
+    rebuildPage: 'Ticking Holiday timer + "Only 6 units remaining in Singapore festive allocation".',
   },
   {
-    dimension: 'Buyer Segmentation',
+    dimension: 'Edition & Identity Fit',
     closersTag: 'O · Own Identity',
-    originalPage: 'Single generic description with no experience-level pathways.',
-    rebuildPage: 'First Timers, Casual Drinkers & Connoisseur ritual bundles + Edition toggle.',
+    originalPage: 'Single fixed bundle SKU with static prose description.',
+    rebuildPage: '3-edition selector (Shine Bundle, Machine Only, Milk Bundle) with live SKU & box list.',
   },
   {
     dimension: 'Luxury & Prestige Cue',
     closersTag: 'S · Status',
-    originalPage: 'Standard corporate product template; muted editorial hierarchy.',
-    rebuildPage: 'Obsidian & Champagne Gold editorial hero, Connoisseur Tier, 1,000+ SG proof.',
+    originalPage: 'Mass-retail corporate template; understated crystal provenance.',
+    rebuildPage: '4-Piece Ensemble showcase, Connoisseur Tier status, and 1,000+ SG buyers proof.',
   },
   {
     dimension: 'Sensory Inspection',
     closersTag: 'E · Emotion',
-    originalPage: 'Small static thumbnails paired with technical spec bullet points.',
-    rebuildPage: '4-frame sticky gallery with 1.25× "Inspect Finish" zoom & tasting notes.',
+    originalPage: 'Small thumbnails with technical copy focused on wattage and features.',
+    rebuildPage: '4-frame interactive gallery (01 / 04) with 1.25× "Inspect Finish" zoom & ritual prose.',
   },
   {
     dimension: 'Local & Member Trust',
     closersTag: 'R · Recognition',
-    originalPage: 'Anonymous session; Singapore delivery & boutique info tucked in footer.',
-    rebuildPage: 'Signed-in member greeting (Jocelyn C.), 42 SG reviews, 3 local boutiques.',
+    originalPage: 'Anonymous session; SG Type G plug and local reviews absent above fold.',
+    rebuildPage: 'Member greeting (Jocelyn C.), 42 verified SG reviews, same-day SG courier before 2:30 PM.',
   },
   {
     dimension: 'Post-Add Retention',
     closersTag: 'S · Stickiness',
-    originalPage: 'Transactional cart add with no capsule cross-sell or delivery meter.',
-    rebuildPage: 'Persistent bag, SGD 80 free delivery tracker, Original capsule pairings.',
+    originalPage: 'Single-item add to basket without capsule sleeve pairing prompts.',
+    rebuildPage: 'Complete Your Tasting Original sleeve grid, persistent bag, and SGD 80 delivery meter.',
   },
 ];

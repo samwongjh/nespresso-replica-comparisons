@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Check, Coffee, Plus, Truck } from 'lucide-react';
 import {
-  BUNDLE_IDENTITIES,
   CAPSULE_UPSELLS,
   EXTRACTION_SIZES,
   GENERATED_IMAGES,
+  PDP_EDITIONS,
 } from '../data/closersData';
 import { ResilientImage } from './ResilientImage';
 
@@ -12,9 +12,9 @@ type AuditTab = 'identity' | 'convenience' | 'stickiness';
 
 export function InteractiveAudit() {
   const [activeTab, setActiveTab] = useState<AuditTab>('identity');
-  const [selectedIdentityId, setSelectedIdentityId] = useState<
-    'first-timers' | 'casual-drinkers' | 'connoisseurs'
-  >('connoisseurs');
+  const [selectedEditionId, setSelectedEditionId] = useState<
+    'shine-bundle' | 'machine-only' | 'milk-bundle'
+  >('shine-bundle');
   const [selectedCupId, setSelectedCupId] = useState<string>('espresso');
   const [bagSleeves, setBagSleeves] = useState<Record<string, number>>({
     arpeggio: 2,
@@ -22,8 +22,8 @@ export function InteractiveAudit() {
     volluto: 0,
   });
 
-  const activeIdentity =
-    BUNDLE_IDENTITIES.find((b) => b.id === selectedIdentityId) ?? BUNDLE_IDENTITIES[2];
+  const activeEdition =
+    PDP_EDITIONS.find((e) => e.id === selectedEditionId) ?? PDP_EDITIONS[0];
   const activeCup = EXTRACTION_SIZES.find((c) => c.id === selectedCupId) ?? EXTRACTION_SIZES[0];
 
   const bagSubtotal = CAPSULE_UPSELLS.reduce(
@@ -50,14 +50,14 @@ export function InteractiveAudit() {
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-[#E7E4DF]">
         <div className="space-y-2 max-w-2xl">
           <div className="text-xs tracking-[0.14em] uppercase text-[#7A746E]">
-            03. Interactive Micro-Flow Sandbox
+            03. Interactive PDP Micro-Flow Sandbox
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl font-medium text-[#1B1918] [text-wrap:balance]">
-            Test the Rebuild&apos;s Behavioral Mechanics
+            Test the Rebuilt PDP&apos;s Behavioral Mechanics
           </h2>
           <p className="text-sm text-[#57524E] leading-relaxed">
-            Compare how static corporate patterns behave against interactive CLOSERS controls
-            across identity matching, extraction clarity, and capsule replenishment.
+            Compare static legacy product-page patterns against the interactive controls shipped on
+            the rebuilt Swarovski Shine Bundle PDP.
           </p>
         </div>
 
@@ -77,7 +77,7 @@ export function InteractiveAudit() {
                 : 'text-[#57524E] hover:text-[#1B1918]'
             }`}
           >
-            O · Own Identity
+            O · Edition Selector
           </button>
           <button
             type="button"
@@ -90,7 +90,7 @@ export function InteractiveAudit() {
                 : 'text-[#57524E] hover:text-[#1B1918]'
             }`}
           >
-            C · Extraction Guide
+            C · 5 Extraction Profiles
           </button>
           <button
             type="button"
@@ -103,38 +103,40 @@ export function InteractiveAudit() {
                 : 'text-[#57524E] hover:text-[#1B1918]'
             }`}
           >
-            S · Cart Stickiness
+            S · Tasting Sleeve Loop
           </button>
         </div>
       </div>
 
-      {/* Flow 1: Own Identity */}
+      {/* Flow 1: Own Identity — PDP 3-Edition Selector */}
       {activeTab === 'identity' && (
         <div className="pt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           <div className="lg:col-span-5 bg-[#FCFBF9] border border-[#E7E4DF] rounded-sm p-6 flex flex-col justify-between space-y-6">
             <div className="space-y-3">
               <div className="text-xs font-semibold uppercase tracking-wider text-[#8C3A2B]">
-                Original Page · One-Size Copy
+                Original PDP · Single Static SKU
               </div>
               <h3 className="font-serif text-2xl font-medium text-[#1B1918]">
-                Static Hardware Listing
+                Fixed Bundle Listing
               </h3>
               <p className="text-sm text-[#57524E] leading-relaxed">
-                Every visitor—whether buying their very first capsule machine or collecting a
-                limited Swarovski edition—reads the same generic specification paragraph.
+                Every shopper—whether seeking a holiday gift ensemble, standalone crystal hardware,
+                or an integrated milk frother—sees only one rigid configuration.
               </p>
               <div className="p-4 bg-white border border-[#E5E5E5] rounded-sm space-y-2 text-xs text-[#555]">
-                <div className="font-semibold text-[#111]">CitiZ Platinum Shine Bundle</div>
+                <div className="font-semibold text-[#111]">Swarovski Shine Bundle</div>
                 <p>
-                  &ldquo;Compact metal machine with 4 beverage selections and hot water option.
-                  Includes travel mug, cups, and ornament.&rdquo;
+                  &ldquo;CitiZ Platinum coffee machine with Swarovski crystals. Includes Travel Mug,
+                  PIXIE cups, and ornament.&rdquo;
                 </p>
-                <div className="text-[#888]">No coffee profile filter · No beginner vs connoisseur guidance</div>
+                <div className="text-[#888]">
+                  No Machine-Only toggle · No Milk Bundle comparison · Static text box list
+                </div>
               </div>
             </div>
             <div className="pt-4 border-t border-[#ECECEC] text-xs text-[#6B6560]">
-              Result: First-time buyers hesitate over capsule compatibility, while connoisseurs miss
-              collector storytelling.
+              Result: Espresso purists and daily milk drinkers must navigate away to search
+              separate machine SKUs.
             </div>
           </div>
 
@@ -142,27 +144,31 @@ export function InteractiveAudit() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <div className="text-xs font-semibold uppercase tracking-wider text-[#2C4C3E]">
-                  CLOSERS Rebuild · Self-Segmented Bundles
+                  CLOSERS PDP · Dynamic Edition &amp; Box Checklist
                 </div>
                 <h3 className="font-serif text-2xl font-medium text-[#1B1918] mt-0.5">
-                  Choose Your Coffee Identity
+                  Select Crystal Edition to Update Box &amp; SKU
                 </h3>
               </div>
               <div className="inline-flex items-center gap-1.5 flex-wrap">
-                {BUNDLE_IDENTITIES.map((profile) => {
-                  const selected = profile.id === selectedIdentityId;
+                {PDP_EDITIONS.map((edition) => {
+                  const selected = edition.id === selectedEditionId;
                   return (
                     <button
-                      key={profile.id}
+                      key={edition.id}
                       type="button"
-                      onClick={() => setSelectedIdentityId(profile.id)}
+                      onClick={() => setSelectedEditionId(edition.id)}
                       className={`px-3 py-1.5 text-xs rounded-sm border transition-colors cursor-pointer whitespace-nowrap ${
                         selected
                           ? 'bg-[#1B1918] text-[#FAF9F6] border-[#1B1918] font-semibold'
                           : 'bg-[#FAF9F6] text-[#4A4642] border-[#DDD8D0] hover:border-[#1B1918]'
                       }`}
                     >
-                      {profile.label}
+                      {edition.id === 'shine-bundle'
+                        ? 'Shine Bundle'
+                        : edition.id === 'machine-only'
+                        ? 'Machine Only'
+                        : 'Milk Bundle'}
                     </button>
                   );
                 })}
@@ -173,38 +179,41 @@ export function InteractiveAudit() {
               <div className="sm:col-span-5 aspect-[4/3] overflow-hidden rounded-sm bg-[#1B1918]">
                 <ResilientImage
                   src={
-                    selectedIdentityId === 'connoisseurs'
+                    selectedEditionId === 'shine-bundle'
                       ? GENERATED_IMAGES.heroBundle
-                      : selectedIdentityId === 'casual-drinkers'
+                      : selectedEditionId === 'machine-only'
                       ? GENERATED_IMAGES.machineDetail
                       : GENERATED_IMAGES.capsuleRitual
                   }
-                  alt={activeIdentity.bundleName}
-                  fallbackTitle={activeIdentity.bundleName}
+                  alt={activeEdition.label}
+                  fallbackTitle={activeEdition.label}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="sm:col-span-7 flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
-                  <div className="text-xs text-[#9E7B4F] font-medium">
-                    {activeIdentity.label} · {activeIdentity.tagline} · {activeIdentity.line} Line
+                  <div className="flex items-center justify-between gap-2 text-xs text-[#9E7B4F] font-medium">
+                    <span>{activeEdition.subtitle}</span>
+                    <span className="font-mono text-[11px] text-[#7A746E] shrink-0">
+                      {activeEdition.sku}
+                    </span>
                   </div>
                   <h4 className="font-serif text-xl font-medium text-[#1B1918]">
-                    {activeIdentity.bundleName}
+                    {activeEdition.label}
                   </h4>
                   <div className="flex items-baseline gap-2.5">
                     <span className="text-lg font-semibold text-[#1B1918] tabular-nums">
-                      SGD {activeIdentity.priceSgd}.00
+                      SGD {activeEdition.priceSgd}.00
                     </span>
                     <span className="text-xs text-[#8E8882] line-through tabular-nums">
-                      SGD {activeIdentity.compareAtSgd}.00
+                      SGD {activeEdition.compareAtSgd}.00
                     </span>
                     <span className="text-xs font-semibold text-[#2C4C3E] tabular-nums">
-                      Save SGD {activeIdentity.compareAtSgd - activeIdentity.priceSgd}
+                      Save SGD {activeEdition.compareAtSgd - activeEdition.priceSgd}
                     </span>
                   </div>
                   <ul className="space-y-1.5 pt-1">
-                    {activeIdentity.includes.map((inc) => (
+                    {activeEdition.includes.map((inc) => (
                       <li key={inc} className="text-xs text-[#4A4642] flex items-start gap-2">
                         <Check
                           className="w-3.5 h-3.5 text-[#2C4C3E] shrink-0 mt-0.5"
@@ -216,7 +225,7 @@ export function InteractiveAudit() {
                   </ul>
                 </div>
                 <p className="text-xs text-[#6B6560] pt-3 border-t border-[#E7E4DF]">
-                  {activeIdentity.whyItWorks}
+                  {activeEdition.identityFit}
                 </p>
               </div>
             </div>
@@ -224,20 +233,20 @@ export function InteractiveAudit() {
         </div>
       )}
 
-      {/* Flow 2: Convenience & Extraction Guide */}
+      {/* Flow 2: Convenience — 5 Programmable Extraction Profiles */}
       {activeTab === 'convenience' && (
         <div className="pt-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           <div className="lg:col-span-5 bg-[#FCFBF9] border border-[#E7E4DF] rounded-sm p-6 flex flex-col justify-between space-y-6">
             <div className="space-y-3">
               <div className="text-xs font-semibold uppercase tracking-wider text-[#8C3A2B]">
-                Original Page · Unstructured Spec Text
+                Original PDP · Unstructured Spec Text
               </div>
               <h3 className="font-serif text-2xl font-medium text-[#1B1918]">
                 Plain Feature Bullet List
               </h3>
               <p className="text-sm text-[#57524E] leading-relaxed">
                 The original page lists beverage options as raw text without clarifying cup
-                volume in millilitres, extraction duration, or brew temperature.
+                volume in millilitres, extraction duration, or thermal calibration.
               </p>
               <ul className="p-4 bg-white border border-[#E5E5E5] rounded-sm space-y-2 text-xs text-[#555] list-disc list-inside">
                 <li>4 coffee selections: Espresso, Lungo, Americano, Americano XL</li>
@@ -247,8 +256,8 @@ export function InteractiveAudit() {
               </ul>
             </div>
             <div className="pt-4 border-t border-[#ECECEC] text-xs text-[#6B6560]">
-              Result: Shoppers cannot visualize portion sizes or compare Original vs Vertuo brew
-              times without opening external manuals.
+              Result: Shoppers cannot inspect portion sizes or Americano two-stage brewing behavior
+              before buying.
             </div>
           </div>
 
@@ -256,31 +265,32 @@ export function InteractiveAudit() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <div className="text-xs font-semibold uppercase tracking-wider text-[#2C4C3E]">
-                  CLOSERS Rebuild · Interactive Extraction Explorer
+                  CLOSERS PDP · Five Programmable Extraction Profiles
                 </div>
                 <h3 className="font-serif text-2xl font-medium text-[#1B1918] mt-0.5">
-                  Select Cup Format to Inspect Telemetry
+                  Select a Chassis Button to Inspect Telemetry
                 </h3>
               </div>
-              <div className="inline-flex items-center gap-1.5 flex-wrap">
-                {EXTRACTION_SIZES.map((cup) => {
-                  const selected = cup.id === selectedCupId;
-                  return (
-                    <button
-                      key={cup.id}
-                      type="button"
-                      onClick={() => setSelectedCupId(cup.id)}
-                      className={`px-3 py-1.5 text-xs rounded-sm border transition-colors cursor-pointer whitespace-nowrap ${
-                        selected
-                          ? 'bg-[#1B1918] text-[#FAF9F6] border-[#1B1918] font-semibold'
-                          : 'bg-[#FAF9F6] text-[#4A4642] border-[#DDD8D0] hover:border-[#1B1918]'
-                      }`}
-                    >
-                      {cup.label}
-                    </button>
-                  );
-                })}
-              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {EXTRACTION_SIZES.map((cup) => {
+                const selected = cup.id === selectedCupId;
+                return (
+                  <button
+                    key={cup.id}
+                    type="button"
+                    onClick={() => setSelectedCupId(cup.id)}
+                    className={`px-3.5 py-2 text-xs rounded-sm border transition-colors cursor-pointer whitespace-nowrap ${
+                      selected
+                        ? 'bg-[#1B1918] text-[#FAF9F6] border-[#1B1918] font-semibold'
+                        : 'bg-[#FAF9F6] text-[#4A4642] border-[#DDD8D0] hover:border-[#1B1918]'
+                    }`}
+                  >
+                    {cup.label} ({cup.volumeMl} ml)
+                  </button>
+                );
+              })}
             </div>
 
             <div className="bg-[#FAF9F6] border border-[#E7E4DF] rounded-sm p-6 space-y-5">
@@ -296,7 +306,9 @@ export function InteractiveAudit() {
                     <div className="text-xs text-[#6B6560]">{activeCup.profile}</div>
                   </div>
                 </div>
-                <span className="font-mono text-xs text-[#9E7B4F] shrink-0">19 Bar · 25s Warmup</span>
+                <span className="font-mono text-xs text-[#9E7B4F] shrink-0">
+                  19 Bar · 25s Heat-Up
+                </span>
               </div>
 
               <div className="grid grid-cols-3 gap-4">
@@ -330,14 +342,14 @@ export function InteractiveAudit() {
           <div className="lg:col-span-5 bg-[#FCFBF9] border border-[#E7E4DF] rounded-sm p-6 flex flex-col justify-between space-y-6">
             <div className="space-y-3">
               <div className="text-xs font-semibold uppercase tracking-wider text-[#8C3A2B]">
-                Original Page · Isolated Bag Add
+                Original PDP · Isolated Bag Add
               </div>
               <h3 className="font-serif text-2xl font-medium text-[#1B1918]">
                 Dead-End Basket Confirmation
               </h3>
               <p className="text-sm text-[#57524E] leading-relaxed">
-                On the legacy page, adding sleeves or accessories requires leaving the machine PDP
-                and manually hunting through the capsules directory.
+                On the legacy page, adding compatible Original capsule sleeves requires leaving the
+                Swarovski machine PDP and browsing the coffee directory manually.
               </p>
               <div className="p-4 bg-white border border-[#E5E5E5] rounded-sm space-y-2 text-xs text-[#555]">
                 <div className="font-semibold text-[#111]">Basket Summary</div>
@@ -359,7 +371,7 @@ export function InteractiveAudit() {
             <div className="flex items-center justify-between gap-4">
               <div>
                 <div className="text-xs font-semibold uppercase tracking-wider text-[#2C4C3E]">
-                  CLOSERS Rebuild · Free Delivery Loop &amp; Compatible Pairings
+                  CLOSERS PDP · Complete Your Tasting &amp; SGD 80 Loop
                 </div>
                 <h3 className="font-serif text-2xl font-medium text-[#1B1918] mt-0.5">
                   Simulate Capsule Basket Threshold (SGD 80)

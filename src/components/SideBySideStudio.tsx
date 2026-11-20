@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import {
   AlertTriangle,
+  ArrowLeft,
   ArrowUpRight,
   Check,
   Columns2,
   ExternalLink,
   MoveHorizontal,
-  Search,
-  ShoppingBag,
+  Package,
+  ShieldCheck,
   SlidersHorizontal,
   Star,
+  Truck,
   UserCheck,
   ZoomIn,
 } from 'lucide-react';
@@ -17,6 +19,7 @@ import {
   CLOSERS_PRINCIPLES,
   ClosersKey,
   GENERATED_IMAGES,
+  PDP_EDITIONS,
   REFERENCE_URLS,
 } from '../data/closersData';
 import { ResilientImage } from './ResilientImage';
@@ -50,11 +53,17 @@ export function SideBySideStudio({
   onSelectPrinciple,
 }: SideBySideStudioProps) {
   const [viewMode, setViewMode] = useState<StudioViewMode>('split');
-  const [sliderPosition, setSliderPosition] = useState<number>(52);
-  const [selectedEdition, setSelectedEdition] = useState<'bundle' | 'machine'>('bundle');
+  const [sliderPosition, setSliderPosition] = useState<number>(50);
+  const [selectedEditionId, setSelectedEditionId] = useState<
+    'shine-bundle' | 'machine-only' | 'milk-bundle'
+  >('shine-bundle');
+  const [quantity, setQuantity] = useState(1);
   const [zoomActive, setZoomActive] = useState(false);
-  const [selectedFrame, setSelectedFrame] = useState<0 | 1 | 2>(0);
+  const [selectedFrame, setSelectedFrame] = useState<0 | 1 | 2 | 3>(0);
   const countdown = useCountdownSnapshot();
+
+  const activeEdition =
+    PDP_EDITIONS.find((e) => e.id === selectedEditionId) ?? PDP_EDITIONS[0];
 
   const currentPrinciple =
     activePrinciple === 'ALL'
@@ -73,9 +82,10 @@ export function SideBySideStudio({
   };
 
   const galleryFrames = [
-    { src: GENERATED_IMAGES.heroBundle, label: '01 / Shine Bundle Ensemble' },
-    { src: GENERATED_IMAGES.machineDetail, label: '02 / Crystal Side Panel' },
-    { src: GENERATED_IMAGES.capsuleRitual, label: '03 / Original Espresso Ritual' },
+    { src: GENERATED_IMAGES.heroBundle, label: '01 / Complete Shine Bundle' },
+    { src: GENERATED_IMAGES.machineDetail, label: '02 / CitiZ Platinum Crystal Band' },
+    { src: GENERATED_IMAGES.heroBundle, label: '03 / Travel Mug, PIXIE Cups & Ornament' },
+    { src: GENERATED_IMAGES.capsuleRitual, label: '04 / 14-Capsule Tasting Assortment' },
   ];
 
   const renderOriginalMockup = () => (
@@ -84,7 +94,7 @@ export function SideBySideStudio({
       <div className="bg-[#F4F3F1] border-b border-[#E5E3DF] px-4 py-2.5 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 min-w-0">
           <span className="text-[11px] font-semibold uppercase tracking-wider text-[#8C3A2B] shrink-0">
-            Before · Original
+            Before · Original PDP
           </span>
           <span className="text-[#B8B2AA]" aria-hidden="true">
             /
@@ -104,7 +114,7 @@ export function SideBySideStudio({
         </a>
       </div>
 
-      {/* Original Corporate Nespresso Template */}
+      {/* Original Corporate Nespresso PDP Template */}
       <div className="p-5 sm:p-6 space-y-5 text-[#1B1918] flex-1 bg-white">
         {/* Generic Corporate Nav */}
         <div
@@ -158,16 +168,16 @@ export function SideBySideStudio({
                 className="w-full h-full object-cover grayscale-[18%]"
               />
               <span className="absolute bottom-2 left-2 bg-white/90 px-2 py-1 text-[10px] text-[#555] border border-[#E2E2E2]">
-                Static Carousel · 1:1 Studio Crop
+                Static Carousel · No Finish Zoom
               </span>
             </div>
-            <div className="grid grid-cols-3 gap-2">
-              {[0, 1, 2].map((idx) => (
+            <div className="grid grid-cols-4 gap-2">
+              {[0, 1, 2, 3].map((idx) => (
                 <div
                   key={idx}
                   className="aspect-[4/3] bg-[#F7F7F7] border border-[#E5E5E5] flex items-center justify-center text-[10px] text-[#888]"
                 >
-                  Angle {idx + 1}
+                  Img {idx + 1}
                 </div>
               ))}
             </div>
@@ -197,20 +207,21 @@ export function SideBySideStudio({
             >
               <div className="text-xl font-bold text-[#111] tabular-nums">SGD 499.00</div>
               <div className="text-[11px] text-[#666]">
-                No savings breakdown · No countdown · Standard availability
+                No savings breakdown · No countdown · No low-stock visibility
               </div>
             </div>
 
-            {/* No Identity / Persona Segmentation */}
+            {/* No Identity / Edition Segmentation */}
             <div
               className={`p-3 bg-[#F8F8F8] border border-[#E5E5E5] text-[11px] text-[#555] space-y-1 ${highlightRing(
                 ['O'],
                 'before'
               )}`}
             >
-              <div className="font-semibold text-[#222]">Single Undifferentiated Offer</div>
+              <div className="font-semibold text-[#222]">Single Fixed SKU</div>
               <div>
-                No buyer profile selector (First Timers vs Connoisseurs) and no machine-only option.
+                No inline toggle for Machine Only (SGD 429) or Milk Bundle (SGD 509) and no
+                interactive box checklist.
               </div>
             </div>
 
@@ -224,26 +235,26 @@ export function SideBySideStudio({
                 Add to Basket
               </button>
               <div className="text-[11px] text-[#767676]">
-                No compatible Original sleeve cross-sell or delivery progress bar.
+                No Original sleeve recommendations or SGD 80 free delivery tracker.
               </div>
             </div>
           </div>
         </div>
 
-        {/* Missing Social Proof & Recognition Strip */}
+        {/* Missing Social Proof & Extraction Telemetry */}
         <div
           className={`pt-4 border-t border-[#ECECEC] grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-[#666] ${highlightRing(
-            ['R', 'S1'],
+            ['R', 'S1', 'C'],
             'before'
           )}`}
         >
           <div className="p-2.5 bg-[#FAFAFA] border border-[#ECECEC]">
-            <span className="font-semibold text-[#222]">Reviews & Local Proof:</span> No verified
-            Singapore buyer review count or neighborhood stories above the fold.
+            <span className="font-semibold text-[#222]">Reviews &amp; Local Assurances:</span> No
+            Singapore buyer review count, Type G 230V plug assurance, or same-day cutoff above fold.
           </div>
           <div className="p-2.5 bg-[#FAFAFA] border border-[#ECECEC]">
-            <span className="font-semibold text-[#222]">Comparison & Extraction:</span> Machine specs
-            listed in static accordion; no interactive cup size or side-by-side table.
+            <span className="font-semibold text-[#222]">Specs &amp; Brewing:</span> Static feature
+            text omits ml output, brew duration in seconds, and thermal specs.
           </div>
         </div>
       </div>
@@ -256,13 +267,13 @@ export function SideBySideStudio({
       <div className="bg-[#1B1918] border-b border-white/10 px-4 py-2.5 flex items-center justify-between gap-3 text-[#FAF9F6]">
         <div className="flex items-center gap-2 min-w-0">
           <span className="text-[11px] font-semibold uppercase tracking-wider text-[#C9A97E] shrink-0">
-            After · CLOSERS Rebuild
+            After · CLOSERS PDP
           </span>
           <span className="text-white/30" aria-hidden="true">
             /
           </span>
           <span className="text-[11px] font-mono text-[#D8D3CC] truncate">
-            nespresso-closers-after.vercel.app
+            nespresso-closers-after.vercel.app/#/order/machines/original/swarovski-shine-bundle
           </span>
         </div>
         <a
@@ -276,49 +287,34 @@ export function SideBySideStudio({
         </a>
       </div>
 
-      {/* Rebuilt CLOSERS Experience */}
+      {/* Rebuilt CLOSERS PDP Experience */}
       <div className="flex-1 flex flex-col">
-        {/* Recognition & Utility Strip */}
+        {/* Recognition Utility Strip */}
         <div
           className={`bg-[#1B1918] text-[#FAF9F6] px-4 py-2 text-[11px] flex items-center justify-between gap-2 border-b border-white/10 ${highlightRing(
-            ['R', 'C'],
+            ['R'],
             'after'
           )}`}
         >
-          <span className="truncate">
-            Complimentary Same-Day SG Delivery above SGD 80 · 9% GST Included
-          </span>
+          <span className="truncate">Complimentary delivery above SGD 80</span>
           <span className="inline-flex items-center gap-1 text-[#C9A97E] font-medium shrink-0">
             <UserCheck className="w-3 h-3" aria-hidden="true" />
-            <span>Jocelyn C. · Connoisseur</span>
+            <span>Jocelyn C. · Connoisseur Tier</span>
           </span>
         </div>
 
-        {/* Rebuilt Navigation Bar */}
+        {/* PDP Breadcrumb + Back Link */}
         <div
-          className={`bg-white px-5 py-3 border-b border-[#E7E4DF] flex items-center justify-between gap-3 ${highlightRing(
+          className={`bg-white px-5 py-2.5 border-b border-[#E7E4DF] flex items-center justify-between gap-3 text-[11px] text-[#6B655F] ${highlightRing(
             ['C'],
             'after'
           )}`}
         >
-          <div className="flex items-center gap-4 min-w-0">
-            <span className="font-serif text-base font-semibold tracking-[0.14em] text-[#1B1918]">
-              NESPRESSO
-            </span>
-            <span className="hidden sm:inline text-[11px] text-[#57524E] truncate">
-              Capsules · Machines · Accessories · Bundle Sets
-            </span>
-          </div>
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#FAF9F6] border border-[#DDD8D0] text-[11px] text-[#57524E]">
-              <Search className="w-3 h-3" aria-hidden="true" />
-              <span>Search</span>
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#1B1918] text-[#FAF9F6] text-[11px] font-semibold">
-              <ShoppingBag className="w-3 h-3" aria-hidden="true" />
-              <span className="tabular-nums">Cart (1)</span>
-            </span>
-          </div>
+          <span className="truncate">Home &gt; Machines &gt; Original &gt; Swarovski Shine Bundle</span>
+          <span className="inline-flex items-center gap-1 font-medium text-[#1B1918] shrink-0">
+            <ArrowLeft className="w-3 h-3" aria-hidden="true" />
+            <span>Back to Nespresso Singapore</span>
+          </span>
         </div>
 
         {/* Main PDP Content */}
@@ -345,16 +341,16 @@ export function SideBySideStudio({
                 </button>
               </div>
               <div className="flex items-center justify-between text-[11px] text-[#57524E]">
-                <span>{galleryFrames[selectedFrame].label}</span>
-                <span className="font-mono tabular-nums">0{selectedFrame + 1} / 03</span>
+                <span className="truncate">{galleryFrames[selectedFrame].label}</span>
+                <span className="font-mono tabular-nums shrink-0">0{selectedFrame + 1} / 04</span>
               </div>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-4 gap-2">
                 {galleryFrames.map((frame, idx) => (
                   <button
                     key={frame.label}
                     type="button"
                     onClick={() => {
-                      setSelectedFrame(idx as 0 | 1 | 2);
+                      setSelectedFrame(idx as 0 | 1 | 2 | 3);
                       setZoomActive(false);
                     }}
                     className={`aspect-[4/3] overflow-hidden rounded-sm border cursor-pointer transition-all ${
@@ -374,9 +370,9 @@ export function SideBySideStudio({
               </div>
             </div>
 
-            {/* Luxury Buy Box */}
+            {/* Luxury PDP Buy Box */}
             <div className="sm:col-span-6 bg-white border border-[#E7E4DF] rounded-sm p-4 space-y-3.5">
-              {/* Status & Social Proof */}
+              {/* Status & Verified SG Social Proof */}
               <div className={`space-y-1.5 ${highlightRing(['S1', 'R'], 'after')}`}>
                 <div className="text-[11px] text-[#7A746E] flex items-center gap-1.5 flex-wrap">
                   <span className="uppercase tracking-wider font-semibold text-[#9E7B4F]">
@@ -385,10 +381,10 @@ export function SideBySideStudio({
                   <span aria-hidden="true">·</span>
                   <span>Limited Holiday Edition</span>
                   <span aria-hidden="true">·</span>
-                  <span className="text-[#2C4C3E] font-medium">In Stock SG</span>
+                  <span className="text-[#2C4C3E] font-medium">In Stock in Singapore</span>
                 </div>
                 <h3 className="font-serif text-xl font-medium text-[#1B1918] leading-tight">
-                  Sculpted Brilliance. Crafted for Espresso.
+                  {activeEdition.label}
                 </h3>
                 <div className="flex items-center gap-2 text-[11px] text-[#4A4642]">
                   <div className="inline-flex items-center gap-0.5 text-[#9E7B4F]">
@@ -398,8 +394,12 @@ export function SideBySideStudio({
                     <Star className="w-3 h-3 text-[#C7C0B6]" aria-hidden="true" />
                   </div>
                   <span className="font-semibold text-[#1B1918] tabular-nums">4.0 / 5</span>
-                  <span className="text-[#6B6560]">(42 SG reviews) · 1,000+ purchased</span>
+                  <span className="text-[#6B6560]">(42 reviews)</span>
                 </div>
+                <p className="text-[11px] text-[#1B1918] tabular-nums">
+                  Join the <strong className="text-[#9E7B4F]">1,000+</strong> coffee lovers in
+                  Singapore who have already purchased this edition.
+                </p>
               </div>
 
               {/* Loss Avoidance: Anchor + Live Countdown + Low Stock */}
@@ -412,21 +412,27 @@ export function SideBySideStudio({
                 <div className="flex items-baseline justify-between gap-2">
                   <div className="flex items-baseline gap-2">
                     <span className="text-lg font-semibold text-[#1B1918] tabular-nums">
-                      {selectedEdition === 'bundle' ? 'SGD 499.00' : 'SGD 429.00'}
+                      SGD {activeEdition.priceSgd}.00
                     </span>
                     <span className="text-xs text-[#8E8882] line-through tabular-nums">
-                      {selectedEdition === 'bundle' ? 'SGD 609.00' : 'SGD 469.00'}
+                      SGD {activeEdition.compareAtSgd}.00
                     </span>
                   </div>
                   <span className="text-[11px] font-semibold text-[#9E7B4F] tabular-nums">
-                    {selectedEdition === 'bundle' ? 'Save SGD 110 (18% Off)' : 'Save SGD 40'}
+                    Save SGD {activeEdition.compareAtSgd - activeEdition.priceSgd} (
+                    {Math.round(
+                      ((activeEdition.compareAtSgd - activeEdition.priceSgd) /
+                        activeEdition.compareAtSgd) *
+                        100
+                    )}
+                    % Off)
                   </span>
                 </div>
 
                 {/* Live Countdown */}
                 <div className="bg-[#1B1918] text-[#FAF9F6] rounded-sm px-3 py-2 flex items-center justify-between gap-2">
                   <span className="text-[10px] uppercase tracking-wider text-[#C9A97E] font-semibold">
-                    Offer ends in
+                    Holiday promotion ends in
                   </span>
                   <div className="font-mono text-[11px] font-semibold tabular-nums flex items-center gap-1">
                     <span>{countdown.days}d</span>
@@ -443,79 +449,115 @@ export function SideBySideStudio({
                 <div className="bg-[#FDF7F0] border border-[#DFC197] rounded-sm px-2.5 py-1.5 flex items-center gap-2 text-[11px] text-[#7A4419]">
                   <AlertTriangle className="w-3.5 h-3.5 text-[#9E5B24] shrink-0" aria-hidden="true" />
                   <span className="font-medium tabular-nums">
-                    Only 6 units remaining in Singapore festive allocation
+                    Limited Quantities · Only 6 units left in SG allocation
                   </span>
                 </div>
               </div>
 
-              {/* Own Identity Selector */}
+              {/* Own Identity 3-Edition Selector */}
               <div className={`space-y-1.5 ${highlightRing(['O'], 'after')}`}>
-                <div className="text-[10px] font-semibold uppercase tracking-wider text-[#57524E]">
-                  Select Edition &amp; Ritual Fit
+                <div className="flex items-center justify-between text-[10px]">
+                  <span className="font-semibold uppercase tracking-wider text-[#1B1918]">
+                    Select Edition
+                  </span>
+                  <span className="font-mono text-[#7A746E]">{activeEdition.sku}</span>
                 </div>
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedEdition('bundle')}
-                    className={`p-2 text-left rounded-sm border text-[11px] cursor-pointer transition-colors ${
-                      selectedEdition === 'bundle'
-                        ? 'border-[#1B1918] bg-[#FAF9F6] font-semibold text-[#1B1918]'
-                        : 'border-[#E7E4DF] text-[#57524E] hover:border-[#C7C0B6]'
-                    }`}
-                  >
-                    <div className="truncate">Shine Bundle</div>
-                    <div className="text-[10px] text-[#7A746E] tabular-nums">SGD 499</div>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setSelectedEdition('machine')}
-                    className={`p-2 text-left rounded-sm border text-[11px] cursor-pointer transition-colors ${
-                      selectedEdition === 'machine'
-                        ? 'border-[#1B1918] bg-[#FAF9F6] font-semibold text-[#1B1918]'
-                        : 'border-[#E7E4DF] text-[#57524E] hover:border-[#C7C0B6]'
-                    }`}
-                  >
-                    <div className="truncate">Machine Only</div>
-                    <div className="text-[10px] text-[#7A746E] tabular-nums">SGD 429</div>
-                  </button>
+                <div className="space-y-1.5">
+                  {PDP_EDITIONS.map((edition) => {
+                    const selected = edition.id === selectedEditionId;
+                    return (
+                      <button
+                        key={edition.id}
+                        type="button"
+                        onClick={() => setSelectedEditionId(edition.id)}
+                        className={`w-full px-2.5 py-2 text-left rounded-sm border text-[11px] cursor-pointer transition-colors flex items-center justify-between gap-2 ${
+                          selected
+                            ? 'border-[#1B1918] bg-[#FAF9F6] font-semibold text-[#1B1918]'
+                            : 'border-[#E7E4DF] text-[#57524E] hover:border-[#C7C0B6]'
+                        }`}
+                      >
+                        <span className="truncate">{edition.label}</span>
+                        <span className="tabular-nums shrink-0">SGD {edition.priceSgd}.00</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
-              {/* Convenience + Stickiness Loop */}
-              <div className={`space-y-2 ${highlightRing(['C', 'S2'], 'after')}`}>
-                <button
-                  type="button"
-                  onClick={() => onSelectPrinciple('S2')}
-                  className="w-full py-2.5 px-4 bg-[#1B1918] hover:bg-[#9E7B4F] text-[#FAF9F6] text-xs font-semibold uppercase tracking-wider rounded-sm transition-colors cursor-pointer"
-                >
-                  Add to Cart — Complimentary SG Delivery
-                </button>
-                <div className="text-[11px] text-[#2C4C3E] flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-                  <span>Unlocks Original sleeve pairing &amp; SGD 80 free shipping loop</span>
+              {/* Convenience Qty + CTA + Recognition Assurances */}
+              <div className={`space-y-2.5 ${highlightRing(['C', 'R', 'S2'], 'after')}`}>
+                <div className="flex items-center gap-2">
+                  <div className="inline-flex items-center border border-[#DDD8D0] rounded-sm text-xs bg-[#FAF9F6]">
+                    <button
+                      type="button"
+                      onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                      className="px-2.5 py-2 text-[#4A4642] hover:text-[#1B1918] cursor-pointer"
+                      aria-label="Decrease quantity"
+                    >
+                      -
+                    </button>
+                    <span className="px-2 font-mono tabular-nums">{quantity}</span>
+                    <button
+                      type="button"
+                      onClick={() => setQuantity((q) => Math.min(10, q + 1))}
+                      className="px-2.5 py-2 text-[#4A4642] hover:text-[#1B1918] cursor-pointer"
+                      aria-label="Increase quantity"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => onSelectPrinciple('S2')}
+                    className="flex-1 py-2 px-3 bg-[#1B1918] hover:bg-[#9E7B4F] text-[#FAF9F6] text-[11px] font-semibold uppercase tracking-wider rounded-sm transition-colors cursor-pointer tabular-nums"
+                  >
+                    Add to Cart — SGD {activeEdition.priceSgd * quantity}.00
+                  </button>
+                </div>
+
+                <div className="pt-2 border-t border-[#F0EDE7] space-y-1 text-[10px] text-[#57524E]">
+                  <div className="flex items-center gap-1.5">
+                    <Truck className="w-3 h-3 text-[#9E7B4F] shrink-0" aria-hidden="true" />
+                    <span>Complimentary same-day SG delivery (before 2:30 PM)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <ShieldCheck className="w-3 h-3 text-[#9E7B4F] shrink-0" aria-hidden="true" />
+                    <span>2-year official SG warranty &amp; Type G 230V plug</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Package className="w-3 h-3 text-[#9E7B4F] shrink-0" aria-hidden="true" />
+                    <span>Includes 14-capsule Original tasting assortment</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Stickiness & Convenience Footer Strip */}
+          {/* Lower PDP Sections Strip */}
           <div
-            className={`bg-white border border-[#E7E4DF] rounded-sm p-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-[11px] ${highlightRing(
-              ['C', 'S2'],
+            className={`bg-white border border-[#E7E4DF] rounded-sm p-3 grid grid-cols-2 sm:grid-cols-4 gap-3 text-[11px] ${highlightRing(
+              ['E', 'C', 'R', 'S2'],
               'after'
             )}`}
           >
             <div>
-              <div className="font-semibold text-[#1B1918]">4-Cup Extraction Explorer</div>
-              <div className="text-[#6B6560]">Espresso · Lungo · Americano · XL</div>
+              <div className="font-semibold text-[#1B1918]">4-Piece Ensemble</div>
+              <div className="text-[#6B6560]">Machine · Mug · Cups · Ornament</div>
             </div>
             <div>
-              <div className="font-semibold text-[#1B1918]">Persona Bundle Sets</div>
-              <div className="text-[#6B6560]">First Timers · Casual · Connoisseurs</div>
+              <div className="font-semibold text-[#1B1918]">5 Extraction Profiles</div>
+              <div className="text-[#6B6560]">40 ml to 200 ml + Hot Water</div>
             </div>
             <div>
-              <div className="font-semibold text-[#1B1918]">Tasting Sleeve Upsell</div>
-              <div className="text-[#6B6560]">1-click Arpeggio, Ristretto, Volluto</div>
+              <div className="font-semibold text-[#1B1918]">42 SG Reviews</div>
+              <div className="text-[#6B6560]">Orchard · Bukit Timah · Marina</div>
+            </div>
+            <div>
+              <div className="font-semibold text-[#1B1918] flex items-center gap-1">
+                <Check className="w-3 h-3 text-[#2C4C3E]" aria-hidden="true" />
+                <span>Tasting Sleeves</span>
+              </div>
+              <div className="text-[#6B6560]">1-click Original pairings</div>
             </div>
           </div>
         </div>
@@ -531,14 +573,15 @@ export function SideBySideStudio({
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-[#E7E4DF]">
         <div className="space-y-2 max-w-2xl">
           <div className="text-xs tracking-[0.14em] uppercase text-[#7A746E]">
-            01. Interactive Side-by-Side Comparison
+            01. Interactive 1:1 PDP Comparison
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl font-medium text-[#1B1918] [text-wrap:balance]">
-            Inspect Every CLOSERS Shift Across Both Pages
+            Inspect Every CLOSERS Shift Across Both Bundle Pages
           </h2>
           <p className="text-sm text-[#57524E] leading-relaxed">
-            Select any letter in the CLOSERS bar below to isolate where the original Nespresso
-            Singapore product page creates friction and how the rebuild resolves it.
+            Compare the original Nespresso Singapore PDP directly against the rebuilt Swarovski
+            Shine Bundle PDP (<code className="font-mono text-xs">#/order/machines/original/swarovski-shine-bundle</code>).
+            Select any CLOSERS letter below to isolate corresponding UI regions.
           </p>
         </div>
 
@@ -651,7 +694,7 @@ export function SideBySideStudio({
             </div>
             <div className="lg:col-span-4 space-y-1.5">
               <div className="text-xs font-semibold uppercase tracking-wider text-[#8C3A2B]">
-                Original Page Gap
+                Original PDP Gap
               </div>
               <p className="text-xs sm:text-sm text-[#4A4642] leading-relaxed">
                 {currentPrinciple.originalSummary}
@@ -659,7 +702,7 @@ export function SideBySideStudio({
             </div>
             <div className="lg:col-span-4 space-y-1.5">
               <div className="text-xs font-semibold uppercase tracking-wider text-[#2C4C3E]">
-                CLOSERS Rebuild Solution
+                CLOSERS Rebuild PDP Solution
               </div>
               <p className="text-xs sm:text-sm text-[#1B1918] leading-relaxed">
                 {currentPrinciple.rebuildSummary}
@@ -669,8 +712,8 @@ export function SideBySideStudio({
         ) : (
           <div className="bg-white border border-[#E7E4DF] rounded-sm px-5 py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-[#57524E]">
             <span>
-              Viewing full structural architecture across both pages. Click any principle button
-              above to highlight exact DOM regions.
+              Viewing full 1:1 PDP comparison. Click any CLOSERS principle button above to
+              highlight exact DOM regions on both product pages.
             </span>
             <span className="font-mono text-[#9E7B4F] shrink-0">
               {isHighlighted(['C']) ? '7 / 7 Pillars Active' : ''}
@@ -694,8 +737,8 @@ export function SideBySideStudio({
             <div className="flex items-center gap-3 text-xs text-[#57524E]">
               <MoveHorizontal className="w-4 h-4 text-[#9E7B4F] shrink-0" aria-hidden="true" />
               <span>
-                Drag the divider or select a preset to peel back the Original Nespresso layout and
-                reveal the CLOSERS Rebuild.
+                Drag the divider or select a preset to peel back the Original Nespresso PDP and
+                reveal the rebuilt CLOSERS Swarovski PDP.
               </span>
             </div>
             <div className="flex items-center gap-2 shrink-0">
@@ -752,14 +795,14 @@ export function SideBySideStudio({
               max={100}
               value={sliderPosition}
               onChange={(e) => setSliderPosition(Number(e.target.value))}
-              aria-label="Reveal slider between Original page and CLOSERS Rebuild"
+              aria-label="Reveal slider between Original PDP and CLOSERS Rebuild PDP"
               className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
             />
           </div>
 
           <div className="flex items-center justify-between text-xs text-[#57524E] font-mono tabular-nums">
-            <span>Left: Original Page ({sliderPosition}% visible)</span>
-            <span>Right: CLOSERS Rebuild ({100 - sliderPosition}% visible)</span>
+            <span>Left: Original PDP ({sliderPosition}% visible)</span>
+            <span>Right: CLOSERS Rebuild PDP ({100 - sliderPosition}% visible)</span>
           </div>
         </div>
       )}
@@ -825,7 +868,7 @@ export function SideBySideStudio({
             </div>
             <iframe
               src={REFERENCE_URLS.rebuild}
-              title="Rebuilt Nespresso CLOSERS Page Live Preview"
+              title="Rebuilt Nespresso Swarovski Shine Bundle PDP Live Preview"
               className="w-full h-[540px] border-0 bg-[#FAF9F6]"
               loading="lazy"
             />

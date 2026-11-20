@@ -44,13 +44,13 @@ export default function App() {
                 </h1>
 
                 <p className="text-[15px] sm:text-base text-[#57524E] leading-relaxed max-w-xl">
-                  A side-by-side teardown comparing Nespresso Singapore&apos;s original Swarovski
-                  Shine Bundle PDP against its rebuilt storefront—illustrating how{' '}
+                  A 1:1 side-by-side teardown comparing Nespresso Singapore&apos;s original
+                  Swarovski Shine Bundle PDP against its rebuilt product page—illustrating how{' '}
                   <strong className="font-semibold text-[#1B1918]">
                     Convenience, Loss Avoidance, Own Identity, Status, Emotion, Recognition, and
                     Stickiness
                   </strong>{' '}
-                  reshape every pixel above and below the fold.
+                  reshape every element above and below the fold.
                 </p>
 
                 <div className="pt-2 flex flex-wrap items-center gap-3">
@@ -72,7 +72,7 @@ export default function App() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-4 py-3 bg-white border border-[#DDD8D0] hover:border-[#1B1918] text-xs font-semibold text-[#1B1918] rounded-sm transition-colors min-h-[44px]"
                   >
-                    <span>Original Nespresso Page</span>
+                    <span>Original Nespresso PDP</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#7A746E]" aria-hidden="true" />
                   </a>
                   <a
@@ -81,7 +81,7 @@ export default function App() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-4 py-3 bg-white border border-[#DDD8D0] hover:border-[#9E7B4F] text-xs font-semibold text-[#1B1918] rounded-sm transition-colors min-h-[44px]"
                   >
-                    <span>Rebuilt CLOSERS App</span>
+                    <span>Rebuilt CLOSERS PDP</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#9E7B4F]" aria-hidden="true" />
                   </a>
                 </div>

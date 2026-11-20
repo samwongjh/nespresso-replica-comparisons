@@ -23,10 +23,10 @@ export function ImpactTable() {
         <table className="w-full text-left border-collapse min-w-[720px]">
           <thead>
             <tr className="border-b border-[#E7E4DF] bg-[#FAF9F6] text-xs font-semibold uppercase tracking-wider text-[#57524E]">
-              <th className="py-4 px-5 w-52">UX Dimension</th>
+              <th className="py-4 px-5 w-52">PDP Dimension</th>
               <th className="py-4 px-5 w-40">CLOSERS Pillar</th>
-              <th className="py-4 px-5">Original Page (nespresso.com/sg)</th>
-              <th className="py-4 px-5">CLOSERS Rebuild (vercel.app)</th>
+              <th className="py-4 px-5">Original PDP (nespresso.com/sg/.../swarovski-shine-bundle)</th>
+              <th className="py-4 px-5">Rebuilt PDP (vercel.app/#/order/.../swarovski-shine-bundle)</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[#F0EDE7] text-xs sm:text-sm">
