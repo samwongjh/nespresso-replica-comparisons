@@ -1,0 +1,6 @@
+{
+  "name": "CLOSERS Case Study: Nespresso × Swarovski Comparison",
+  "description": "Side-by-side UX and conversion comparison between the original Nespresso Singapore Swarovski Shine Bundle page and its CLOSERS framework rebuild.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
